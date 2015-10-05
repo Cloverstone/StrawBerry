@@ -1,4 +1,3 @@
-ich.addTemplate('berry_tabs', '<ul class="nav nav-tabs">{{#sectionList}}<li><a href="#tab{{index}}" data-toggle="tab">{{{text}}}</a></li>{{/sectionList}}</ul>');
 Berry.renderers['tabs'] = function(owner) {
 	this.owner = owner;
 	this.fieldset = function(data){
@@ -8,6 +7,7 @@ Berry.renderers['tabs'] = function(owner) {
 		return Berry.render('berry_base_fieldset', data);
 	};
 	this.render = function(){
+
 		this.owner.$el.html(Berry.render('berry_base_form', this.owner.options));
 		return this.owner.$el.find('form');
 	};
@@ -28,6 +28,7 @@ Berry.prototype.events.initialize.push({
 	token: Berry.getUID(),
 	func: function() {
 		if(this.options.renderer == 'tabs') {
+			this.sectionsEnabled = true;
 			this.options.modifiers += " tab-content";
 		}
 	}
